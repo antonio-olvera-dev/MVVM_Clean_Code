@@ -1,4 +1,4 @@
-package com.toni.mvvm__clean_code.data.models
+package com.toni.mvvm__clean_code.data.article.model
 
 import com.google.gson.annotations.SerializedName
 
