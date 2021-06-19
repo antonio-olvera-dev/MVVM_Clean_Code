@@ -5,9 +5,11 @@ import com.toni.mvvm__clean_code.data.article.service.ArticleService
 
 class ArticleRepository {
 
-    fun getArticles(): List<Article> {
+    private val articleService: ArticleService = ArticleService()
 
-        return ArticleService().getArticles()
+    suspend fun getArticles(): List<Article> {
+
+        return articleService.getArticles()
     }
 
 }

@@ -6,7 +6,7 @@ import com.toni.mvvm__clean_code.domain.article.repository.ArticleRepository
 
 class ArticleUseCase {
 
-    fun getArticles(): List<Article> {
+  suspend  fun getArticles(): List<Article> {
 
         return ArticleRepository().getArticles()
     }

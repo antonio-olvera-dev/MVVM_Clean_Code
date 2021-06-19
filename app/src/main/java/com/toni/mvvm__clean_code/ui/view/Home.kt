@@ -17,7 +17,7 @@ class Home : AppCompatActivity() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
     private val controller: HomeController = HomeController()
-    private val calendar = DatePickerDialog(this)
+     private lateinit var calendar:DatePickerDialog
     private var pressBtnStart: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +32,22 @@ class Home : AppCompatActivity() {
 
     private fun start() {
 
+        calendar = DatePickerDialog(this)
+
+        calendar.setOnDateSetListener(DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+
+            val date: String = controller.getBuildDate(year.toString(), month.toString(), dayOfMonth.toString())
+            viewModel.loadParams(pressBtnStart, date)
+
+            Toast.makeText(
+                this,
+                date,
+                Toast.LENGTH_SHORT
+            ).show()
+
+        })
+
+        calendar.show()
 
 
         viewModel.getArticles().observe(this, Observer<List<Article>> { articles ->
