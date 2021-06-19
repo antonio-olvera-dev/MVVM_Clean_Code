@@ -33,6 +33,7 @@ class Home : AppCompatActivity() {
     private fun start() {
 
 
+
         viewModel.getArticles().observe(this, Observer<List<Article>> { articles ->
             binding.tvWelcome.text = articles.toString()
         })
