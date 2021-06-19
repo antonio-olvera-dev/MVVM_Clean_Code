@@ -1,5 +1,6 @@
 package com.toni.mvvm__clean_code.ui.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,8 +13,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel(), IArticleParametersGet {
 
-    override val articleParametersGet: ArticleParametersGet = ArticleParametersGet("", "")
-//    val useCase: ArticleUseCase = ArticleUseCase()
+    override val articleParametersGet: ArticleParametersGet = ArticleParametersGet("1995-06-19", "1995-06-25")
+    val useCase: ArticleUseCase = ArticleUseCase()
 
     private val articles: MutableLiveData<List<Article>> by lazy {
         MutableLiveData<List<Article>>().also {
@@ -26,13 +27,12 @@ class HomeViewModel : ViewModel(), IArticleParametersGet {
         return articles
     }
 
-    fun loadStartup() {
-
+    private fun loadStartup() {
         viewModelScope.launch {
-//            val newArticles = useCase.getArticles()
-//            if (!newArticles.isNullOrEmpty()) {
-//                articles.postValue(newArticles)
-//            }
+            val newArticles = useCase.getArticles(articleParametersGet)
+            if (!newArticles.isNullOrEmpty()) {
+                articles.postValue(newArticles)
+            }
         }
 
     }

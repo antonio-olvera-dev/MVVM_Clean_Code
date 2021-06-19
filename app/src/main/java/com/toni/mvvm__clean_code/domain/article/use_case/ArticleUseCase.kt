@@ -1,14 +1,13 @@
 package com.toni.mvvm__clean_code.domain.article.use_case
 
-import androidx.lifecycle.LiveData
+import com.toni.mvvm__clean_code.data.article.article_parameters.ArticleParametersGet
 import com.toni.mvvm__clean_code.data.article.model.Article
 import com.toni.mvvm__clean_code.domain.article.repository.ArticleRepository
 
 class ArticleUseCase {
 
-  suspend  fun getArticles(): List<Article> {
-
-        return ArticleRepository().getArticles()
+    suspend  fun getArticles(articleParametersGet: ArticleParametersGet): List<Article> {
+        return ArticleRepository().getArticles(articleParametersGet)
     }
 
 }

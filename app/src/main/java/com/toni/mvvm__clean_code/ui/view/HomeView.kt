@@ -12,7 +12,7 @@ import com.toni.mvvm__clean_code.ui.view.home_controller.HomeController
 import com.toni.mvvm__clean_code.ui.viewModel.HomeViewModel
 
 
-class Home : AppCompatActivity() {
+class HomeView : AppCompatActivity() {
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
