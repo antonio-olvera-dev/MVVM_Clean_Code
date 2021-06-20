@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MVVM_&amp;_Clean_Code</string>
+    <string name="title">Choose a start date and an end date to see the images taken by NASA with a small description.</string>
+    <string name="footer">Remember that if you choose very distant dates the process could take several seconds, I recommend that you try from month to month.</string>
+    <string name="start_date_title">Start date</string>
+    <string name="end_date_title">Ending date</string>
+    <string name="start_date">1995–06–19</string>
+    <string name="end_date">1995–06–25</string>
+
+
 </resources>
