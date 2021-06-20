@@ -17,8 +17,6 @@ class HomeView : AppCompatActivity() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
     private val controller: HomeController = HomeController()
-    private lateinit var calendar: DatePickerDialog
-    private var pressBtnStart: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,47 +24,8 @@ class HomeView : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        start()
-    }
-
-    private fun start() {
-
-        viewModel.articleParametersGet.startDate = getString(R.string.start_date)
-        viewModel.articleParametersGet.endDate = getString(R.string.end_date)
-        calendar = DatePickerDialog(this)
-
-        calendar.setOnDateSetListener(DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-
-            val date: String =
-                controller.getBuildDate(year.toString(), month.toString(), dayOfMonth.toString())
-
-            if (pressBtnStart) {
-                binding.homeBtStartDate.text = date
-            } else {
-                binding.homeBtEndingDate.text = date
-            }
-
-            viewModel.loadParams(pressBtnStart, date)
-        })
-
-        binding.homeBtStartDate.setOnClickListener {
-            pressBtnStart = true
-            calendar.show()
-        }
-
-        binding.homeBtEndingDate.setOnClickListener {
-            pressBtnStart = false
-            calendar.show()
-        }
-
-        binding.ibRocket.setOnClickListener {
-            viewModel.loadArticles()
-        }
-
-        viewModel.getArticles().observe(this, Observer<List<Article>> { articles ->
-//            binding.tvWelcome.text = articles.toString()
-        })
 
     }
+
 
 }
