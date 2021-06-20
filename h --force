@@ -1,0 +1,13 @@
+* [33md431681[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m add getDatePickerDialog
+[31m|[m * [33m6b86341[m[33m ([m[1;31morigin/master[m[33m)[m add getDatePickerDialog and DateListController
+[31m|[m[31m/[m  
+* [33m8684658[m create DateListFragment and DetaislArticleFragment
+* [33mddaae83[m create home_navigation
+* [33m960193f[m create structure of activity_home.xml
+* [33m1f57cf4[m Config Retrofit and check request
+* [33m0f66a56[m preparing the api call
+* [33m487135b[m add ArticleService, ..Repository, ..UseCase
+* [33mf2cfbb4[m created ArticleParametersGet and HomeController
+* [33maf6a3d4[m create model Article, add viewModel and config Binding
+* [33m5c47f47[m add implementation
+* [33m8d4b021[m init
