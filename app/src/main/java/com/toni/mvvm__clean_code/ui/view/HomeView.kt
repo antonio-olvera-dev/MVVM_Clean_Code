@@ -18,7 +18,6 @@ import java.net.URLConnection
 
 class HomeView : AppCompatActivity() {
 
-    private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: ActivityHomeBinding
     private val controller: HomeController = HomeController()
 

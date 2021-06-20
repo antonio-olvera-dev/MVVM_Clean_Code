@@ -9,7 +9,6 @@ class DateListController {
 
     fun getDates(articles: List<Article>?):List<String>{
 
-        Log.i("------------", articles.toString())
         val dates: MutableList<String> = arrayListOf()
         articles?.iterator()?.forEach { article ->
             dates.add(article.date)

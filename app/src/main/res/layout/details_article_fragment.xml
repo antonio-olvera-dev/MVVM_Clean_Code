@@ -5,10 +5,51 @@
     android:layout_height="match_parent"
     tools:context=".ui.view.fragments.details_article_fragment.DetailsArticleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/iv_details_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="400dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_rocket"
+                />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="25dp" />
+
+            <TextView
+                android:id="@+id/tv_details_article_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/tv_details_article_explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
