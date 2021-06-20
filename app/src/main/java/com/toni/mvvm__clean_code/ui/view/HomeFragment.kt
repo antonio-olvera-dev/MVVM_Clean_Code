@@ -2,15 +2,18 @@ package com.toni.mvvm__clean_code.ui.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.toni.mvvm__clean_code.R
 import com.toni.mvvm__clean_code.data.article.model.Article
 import com.toni.mvvm__clean_code.databinding.HomeFragmentBinding
+import com.toni.mvvm__clean_code.ui.view.fragments.date_list_fragmet.DateListController
 import com.toni.mvvm__clean_code.ui.view.home_controller.HomeController
 import com.toni.mvvm__clean_code.ui.viewModel.HomeViewModel
 
@@ -33,9 +36,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.home_fragment, container, false)
+    ): View {
+        binding = HomeFragmentBinding.inflate(inflater)
+        return binding.root
     }
 
     companion object {
@@ -50,25 +53,22 @@ class HomeFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding = HomeFragmentBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
 
         start()
     }
 
 
-
-
     private fun start() {
 
         viewModel.articleParametersGet.startDate = getString(R.string.start_date)
         viewModel.articleParametersGet.endDate = getString(R.string.end_date)
-        calendar = DatePickerDialog(this.requireContext())
+        calendar = controller.getDatePickerDialog(this.requireContext(), viewModel.articleParametersGet)
 
         calendar.setOnDateSetListener(DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
 
             val date: String =
-                controller.getBuildDate(year.toString(), month.toString(), dayOfMonth.toString())
+                controller.getBuildDate(year.toString(), month, dayOfMonth.toString())
 
             if (pressBtnStart) {
                 binding.homeBtStartDate.text = date
@@ -90,16 +90,17 @@ class HomeFragment : Fragment() {
         }
 
         binding.ibRocket.setOnClickListener {
+
             viewModel.loadArticles()
         }
 
         viewModel.getArticles().observe(viewLifecycleOwner, Observer<List<Article>> { articles ->
 
+            if (!articles.isNullOrEmpty()) findNavController().navigate(R.id.dateListFragment)
         })
 
+
     }
-
-
 
 
 }
