@@ -1,7 +1,5 @@
-package com.toni.mvvm__clean_code.ui.view.fragments.date_list_fragmet
+package com.toni.mvvm__clean_code.ui.home.view.fragments.date_list.controller
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import com.toni.mvvm__clean_code.data.article.model.Article
 
 

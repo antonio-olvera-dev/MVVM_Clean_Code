@@ -1,4 +1,4 @@
-package com.toni.mvvm__clean_code.ui.view.home_controller
+package com.toni.mvvm__clean_code.ui.home.view.controller
 
 import android.app.DatePickerDialog
 import android.content.Context

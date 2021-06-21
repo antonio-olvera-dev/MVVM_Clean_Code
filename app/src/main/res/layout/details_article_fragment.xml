@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.fragments.details_article_fragment.DetailsArticleFragment">
+    tools:context=".ui.home.view.fragments.details_article.view.DetailsArticleFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,10 @@
             <TextView
                 android:id="@+id/tv_details_article_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"

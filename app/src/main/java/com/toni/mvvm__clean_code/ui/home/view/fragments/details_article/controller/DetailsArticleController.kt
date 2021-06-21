@@ -1,4 +1,4 @@
-package com.toni.mvvm__clean_code.ui.view.fragments.details_article_fragment
+package com.toni.mvvm__clean_code.ui.home.view.fragments.details_article.controller
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

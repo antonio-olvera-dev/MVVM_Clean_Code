@@ -1,4 +1,4 @@
-package com.toni.mvvm__clean_code.ui.view
+package com.toni.mvvm__clean_code.ui.home.view
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -6,16 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.toni.mvvm__clean_code.R
 import com.toni.mvvm__clean_code.data.article.model.Article
 import com.toni.mvvm__clean_code.databinding.HomeFragmentBinding
-import com.toni.mvvm__clean_code.shared.Constant
-import com.toni.mvvm__clean_code.ui.view.home_controller.HomeController
-import com.toni.mvvm__clean_code.ui.viewModel.HomeViewModel
+import com.toni.mvvm__clean_code.ui.home.shared.HomeBundle
+import com.toni.mvvm__clean_code.ui.home.view.controller.HomeController
+import com.toni.mvvm__clean_code.ui.home.viewModel.HomeViewModel
 
 class HomeFragment : Fragment() {
 
@@ -44,6 +43,7 @@ class HomeFragment : Fragment() {
 
     private fun start() {
 
+        HomeBundle.clearMemory()
         viewModel.articleParametersGet.startDate = getString(R.string.start_date)
         viewModel.articleParametersGet.endDate = getString(R.string.end_date)
         calendar =
@@ -79,9 +79,10 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getArticles().observe(viewLifecycleOwner, Observer<List<Article>> { articles ->
-            val bundle = bundleOf(Constant.articles to articles)
 
-            if (!articles.isNullOrEmpty()) findNavController().navigate(R.id.dateListFragment, bundle)
+            HomeBundle.articles = articles
+
+            if (!articles.isNullOrEmpty()) findNavController().navigate(R.id.dateListFragment)
         })
 
 
