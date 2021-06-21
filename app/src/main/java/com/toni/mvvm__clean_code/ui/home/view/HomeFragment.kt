@@ -49,19 +49,7 @@ class HomeFragment : Fragment() {
         calendar =
             controller.getDatePickerDialog(this.requireContext(), viewModel.articleParametersGet)
 
-        calendar.setOnDateSetListener(DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-
-            val date: String =
-                controller.getBuildDate(year.toString(), month, dayOfMonth.toString())
-
-            if (pressBtnStart) {
-                binding.homeBtStartDate.text = date
-            } else {
-                binding.homeBtEndingDate.text = date
-            }
-
-            viewModel.loadParams(pressBtnStart, date)
-        })
+        launchDateListener()
 
         binding.homeBtStartDate.setOnClickListener {
             pressBtnStart = true
@@ -85,7 +73,29 @@ class HomeFragment : Fragment() {
             if (!articles.isNullOrEmpty()) findNavController().navigate(R.id.dateListFragment)
         })
 
+        viewModel.loading.observe(viewLifecycleOwner, Observer<Boolean> { loading ->
 
+            if (loading) binding.progressBarInclude.progressBarParent.visibility = View.VISIBLE
+            else binding.progressBarInclude.progressBarParent.visibility = View.GONE
+
+        })
+
+    }
+
+    private fun launchDateListener() {
+        calendar.setOnDateSetListener(DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+
+            val date: String =
+                controller.getBuildDate(year.toString(), month, dayOfMonth.toString())
+
+            if (pressBtnStart) {
+                binding.homeBtStartDate.text = date
+            } else {
+                binding.homeBtEndingDate.text = date
+            }
+
+            viewModel.loadParams(pressBtnStart, date)
+        })
     }
 
 }

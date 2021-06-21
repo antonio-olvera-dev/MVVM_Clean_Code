@@ -16,6 +16,8 @@ class HomeViewModel : ViewModel(), IArticleParametersGet {
         ArticleParametersGet("", "")
     private val useCase: ArticleUseCase = ArticleUseCase()
 
+    var loading: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+
     private val articles: MutableLiveData<List<Article>> by lazy {
         MutableLiveData<List<Article>>().also {
 
@@ -34,10 +36,12 @@ class HomeViewModel : ViewModel(), IArticleParametersGet {
 
     fun loadArticles() {
         viewModelScope.launch {
+            loading.postValue(true)
             val newArticles = useCase.getArticles(articleParametersGet)
             if (!newArticles.isNullOrEmpty()) {
                 articles.postValue(newArticles)
             }
+            loading.postValue(false)
         }
     }
 
