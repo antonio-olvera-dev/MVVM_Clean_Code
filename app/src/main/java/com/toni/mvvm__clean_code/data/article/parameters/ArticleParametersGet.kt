@@ -1,4 +1,4 @@
-package com.toni.mvvm__clean_code.data.article.article_parameters
+package com.toni.mvvm__clean_code.data.article.parameters
 
 /**
  * Article parameters get

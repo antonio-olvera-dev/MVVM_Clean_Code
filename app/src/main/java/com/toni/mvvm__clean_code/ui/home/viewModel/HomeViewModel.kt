@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.toni.mvvm__clean_code.data.article.article_parameters.ArticleParametersGet
-import com.toni.mvvm__clean_code.data.article.article_parameters.IArticleParametersGet
+import com.toni.mvvm__clean_code.data.article.parameters.ArticleParametersGet
+import com.toni.mvvm__clean_code.data.article.parameters.IArticleParametersGet
 import com.toni.mvvm__clean_code.data.article.model.Article
 import com.toni.mvvm__clean_code.domain.article.use_case.ArticleUseCase
 import kotlinx.coroutines.launch

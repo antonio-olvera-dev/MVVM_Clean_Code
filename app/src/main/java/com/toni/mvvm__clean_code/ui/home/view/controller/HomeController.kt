@@ -2,7 +2,7 @@ package com.toni.mvvm__clean_code.ui.home.view.controller
 
 import android.app.DatePickerDialog
 import android.content.Context
-import com.toni.mvvm__clean_code.data.article.article_parameters.ArticleParametersGet
+import com.toni.mvvm__clean_code.data.article.parameters.ArticleParametersGet
 
 class HomeController {
 
